@@ -1,0 +1,3 @@
+/Users/pietro/CppProjects/RNN_p/build/CMakeFiles/RNN_p.dir
+/Users/pietro/CppProjects/RNN_p/build/CMakeFiles/edit_cache.dir
+/Users/pietro/CppProjects/RNN_p/build/CMakeFiles/rebuild_cache.dir

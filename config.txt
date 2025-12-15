@@ -1,0 +1,32 @@
+# --- File Settings ---
+FILENAME_IN = ../data/London_df.csv
+
+# --- Date Ranges ---
+START_TRAIN = 2014-01-01 00:00:00
+END_TRAIN   = 2018-01-01 00:00:00
+START_VALID = 2017-12-30 00:00:00
+END_VALID   = 2019-01-01 00:00:00
+START_TEST  = 2018-12-30 00:00:00
+END_TEST    = 2020-01-01 00:00:00
+
+# --- Forecasting Mode ---
+USE_PROBABILISTIC = false
+
+# --- RNN(p) Architecture ---
+HIDDEN_SIZE = 10
+LAGS = 1, 2, 24
+
+# --- Optimization Parameters ---
+EPOCHS = 500
+BATCH_SIZE = 32
+PATIENCE = 50
+LEARNING_RATE = 0.001
+
+# --- Data Windowing ---
+TAU = 49
+
+# --- Regressors (Linear Model) ---
+REGRESSORS_LM = SY1, CY1, SY2, CY2, Trend, DoW_5, DoW_6, Holiday
+
+# --- Regressors (RNN Model) ---
+REGRESSORS_NN = Temperature, Precipitations, LowCloudCoverage, MediumCloudCoverage, HighCloudCoverage, SolarRadiation, WindSpeed100m, WindSpeed10m, SY1, CY1, SY2, CY2, SD1, CD1, SD2, CD2, DoW_0, DoW_1, DoW_2, DoW_3, DoW_4, DoW_5, DoW_6
