@@ -1,0 +1,42 @@
+#!/bin/bash
+#PBS -N rnn_parallel
+#PBS -l nodes=2:ppn=4
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o rnn_parallel.log
+
+# =========================
+# Load modules
+# =========================
+module load gcc/11.2.0
+module load parallel
+
+# =========================
+# Go to working directory
+# =========================
+cd $PBS_O_WORKDIR
+
+# =========================
+# Compile the project
+# =========================
+g++ -O2 -std=c++20 src/*.cpp -o RNN_p
+
+# =========================
+# File with seeds
+# =========================
+SEEDS_FILE=seeds.txt
+
+# =========================
+# Number of parallel jobs
+# Adjust -j to total cores: nodes * ppn
+# =========================
+NJOBS=$(( 2 * 4 ))   # 2 nodes x 4 cores = 8 jobs in parallel
+
+# =========================
+# Run GNU Parallel on multiple nodes
+# =========================
+parallel -j $NJOBS --sshloginfile ${PBS_NODEFILE} ./RNN_p {} < $SEEDS_FILE
+
+# =========================
+# End of script
+# =========================
