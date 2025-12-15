@@ -36,7 +36,3 @@ NJOBS=$(( 2 * 4 ))   # 2 nodes x 4 cores = 8 jobs in parallel
 # Run GNU Parallel on multiple nodes
 # =========================
 parallel -j $NJOBS --sshloginfile ${PBS_NODEFILE} ./RNN_p {} < $SEEDS_FILE
-
-# =========================
-# End of script
-# =========================
