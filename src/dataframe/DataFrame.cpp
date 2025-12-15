@@ -10,6 +10,7 @@ Copyright (c) 2025, Politecnico di Milano, QFinLab
 #include <limits>
 #include <cmath>
 #include <algorithm>
+#include <iomanip>
 
 #include "DataFrame.h"
 #include "utils/utils.h"
