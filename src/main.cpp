@@ -4,6 +4,7 @@ Last Modified: P.M., 22-05-2025
 Copyright (c) 2025, Politecnico di Milano, QFinLab
 */
 
+#include <iomanip>
 #include <vector>
 
 #include "dataframe/DataFrame.h"
@@ -11,7 +12,6 @@ Copyright (c) 2025, Politecnico di Milano, QFinLab
 #include "models/Recurrent.h"
 #include "preprocessing/Scaler.h"
 #include "utils/utils.h"
-#include <iomanip>
 
 
 int main() {
