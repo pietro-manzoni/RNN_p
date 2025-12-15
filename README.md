@@ -4,9 +4,6 @@
 "RNN(p) for Power Consumption Forecasting". This library provides a simple and flexible pipeline for time-series 
 forecasting, leveraging modular design for linear algebra operations, data handling, model training, and preprocessing.
 
-The implementation is provided as part of the research conducted in the paper, aiming to replicate and extend the 
-results in a straightforward, reproducible manner.
-
 ---
 
 ## 📚 Authors
