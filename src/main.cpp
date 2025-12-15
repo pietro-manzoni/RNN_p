@@ -11,6 +11,7 @@ Copyright (c) 2025, Politecnico di Milano, QFinLab
 #include "models/Recurrent.h"
 #include "preprocessing/Scaler.h"
 #include "utils/utils.h"
+#include <iomanip>
 
 
 int main() {
