@@ -1,6 +1,6 @@
 # RNN_p
 
-**RNN_p** is a C++ library for training and evaluating RNN(p) models, as described in the research paper 
+**RNN_p** is a C++ library for training RNN(p) models, as described in the paper 
 "RNN(p) for Power Consumption Forecasting". This library provides a simple and flexible pipeline for time-series 
 forecasting, leveraging modular design for linear algebra operations, data handling, model training, and preprocessing.
 
