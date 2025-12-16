@@ -5,6 +5,11 @@
 #PBS -j oe
 #PBS -o rnn_parallel.log
 
+set -e   # stop on first error
+
+echo "Job started on $(date)"
+echo "Working directory: $PBS_O_WORKDIR"
+
 # =========================
 # Load modules
 # =========================
@@ -14,35 +19,48 @@ module load parallel
 # =========================
 # Go to project root
 # =========================
-cd $PBS_O_WORKDIR
+cd "$PBS_O_WORKDIR" || { echo "ERROR: Cannot cd to PBS_O_WORKDIR"; exit 1; }
 
 # =========================
-# Create build directory if missing
+# Sanity checks (root)
+# =========================
+[ -f config.txt ] || { echo "ERROR: config.txt missing"; exit 1; }
+[ -f seeds.txt ]  || { echo "ERROR: seeds.txt missing"; exit 1; }
+[ -d src ]        || { echo "ERROR: src/ directory missing"; exit 1; }
+
+# =========================
+# Build
 # =========================
 mkdir -p build
 
-# =========================
-# Compile (output goes into build/)
-# =========================
+echo "Compiling..."
 g++ -O2 -std=c++20 -I src $(find src -name "*.cpp") -o build/RNN_p
 
+[ -x build/RNN_p ] || { echo "ERROR: build/RNN_p not created"; exit 1; }
+
 # =========================
-# Move into build/ (CRITICAL)
+# Switch to build/
 # =========================
 cd build
 
 # =========================
-# File with seeds (relative to build/)
+# Sanity checks (build)
 # =========================
-SEEDS_FILE=../seeds.txt
+[ -f ../config.txt ] || { echo "ERROR: ../config.txt not accessible from build/"; exit 1; }
+
+# Optional: check input file from config
+INPUT_FILE=$(grep -E '^FILENAME_IN' ../config.txt | awk -F= '{print $2}' | tr -d ' ')
+
+[ -f "$INPUT_FILE" ] || { echo "ERROR: Input file not found: $INPUT_FILE"; exit 1; }
 
 # =========================
-# Number of parallel jobs
+# Parallel execution
 # =========================
 NJOBS=$(( 2 * 4 ))
 
-# =========================
-# Run GNU Parallel
-# =========================
-parallel -j $NJOBS ./RNN_p {} < $SEEDS_FILE
+echo "Running $NJOBS parallel jobs"
+parallel -j $NJOBS ./RNN_p {} < ../seeds.txt
+
+echo "Job finished on $(date)"
+
 
