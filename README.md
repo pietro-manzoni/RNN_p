@@ -12,9 +12,10 @@ forecasting, leveraging modular design for linear algebra operations, data handl
 - Pietro Manzoni, University of Edinburgh, UK
 - Roberto Baviera, Politecnico di Milano, Italy
 
-<!--For detailed references, please see the paper: ["RNN(p) for Power Consumption Forecasting"](https://link.springer.com/journal/10203/s10203-026-00597-2).  -->
+<!--For detailed references, please see the paper: ["RNN(p) for Power Consumption Forecasting"](https://link.springer.com/article/10.1007/s10203-026-00597-2).  -->
 
-For detailed references, please see the paper: ["RNN(p) for Power Consumption Forecasting"](https://link.springer.com/journal/10203/s10203-026-00597-2).
+For detailed references, please see the paper: ["RNN(p) for Power Consumption Forecasting"](https://link.springer.com/article/10.1007/s10203-026-00597-2).
+
 
 ---
 
